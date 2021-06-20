@@ -5,8 +5,6 @@ import VsComponent from '../../../mixins/component'
 @Component
 export default class VsRadio extends VsComponent {
 
-  _uid: any
-
   model: {
     prop: 'model',
     event: 'change'

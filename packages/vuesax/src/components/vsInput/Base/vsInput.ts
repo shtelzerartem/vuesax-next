@@ -22,9 +22,6 @@ export default class VsInput extends VsComponent {
   @Prop({ type: Boolean, default: false }) textWhite!: boolean
   @Prop({ type: Boolean, default: false }) square!: boolean
 
-  // tslint:disable-next-line:variable-name
-  _uid: any
-
   get getId() {
     return `vs-input--${this.$attrs.id || this._uid}`
   }

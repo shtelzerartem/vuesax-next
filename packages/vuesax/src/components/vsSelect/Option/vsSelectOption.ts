@@ -19,8 +19,6 @@ export default class VsSelectOption extends VsComponent {
 
   hiddenOption: boolean = false
 
-  _uid: any
-
   myIndex: 0
 
   @Watch('$parent.textFilter')

@@ -56,8 +56,6 @@ export default class VsSelect extends VsComponent {
 
   childVisibles: number = 0
 
-  _uid: any
-
   isSelect: boolean = true
 
   insertOptions() {

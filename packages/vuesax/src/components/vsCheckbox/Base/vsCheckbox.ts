@@ -5,9 +5,6 @@ import VsComponent from '../../../mixins/component'
 
 @Component
 export default class VsCheckbox extends VsComponent {
-  // tslint:disable-next-line:variable-name
-  _uid: any
-
   @Prop({ default: '' }) value: any
 
   @Prop({ default: '' }) val!: any
@@ -152,6 +149,7 @@ export default class VsCheckbox extends VsComponent {
     }, [
       this.$slots.default
     ])
+    console.log(this, this._uid);
 
     const conCheckbox = h('div', {
       staticClass: 'vs-checkbox-con'
