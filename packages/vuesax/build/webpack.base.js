@@ -1,19 +1,19 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const webpack = require('webpack')
-const pkg = require('../package.json')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const WebpackBar = require('webpackbar');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const webpack = require("webpack");
+const pkg = require("../package.json");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const WebpackBar = require("webpackbar");
 
 module.exports = {
-  mode: 'production',
-  stats: 'errors-only',
+  mode: "production",
+  stats: "errors-only",
   externals: {
     vue: {
-      commonjs: 'vue',
-      commonjs2: 'vue',
-      amd: 'vue',
-      root: 'Vue'
+      commonjs: "vue",
+      commonjs2: "vue",
+      amd: "vue",
+      root: "Vue"
     }
   },
   module: {
@@ -23,30 +23,30 @@ module.exports = {
         exclude: /node_modules/,
         loader: [
           {
-            loader: 'babel-loader',
+            loader: "babel-loader"
           }
-        ],
+        ]
       },
       {
         test: /\.sass$/,
         use: [
           MiniCssExtractPlugin.loader,
-          'css-loader',
-          'postcss-loader',
+          "css-loader",
+          "postcss-loader",
           {
-            loader: 'sass-loader',
+            loader: "sass-loader",
             options: {
-              implementation: require('sass'),
+              implementation: require("sass"),
               sassOptions: {
                 // fiber: require('fibers'),
                 indentedSyntax: true,
-                outputStyle: 'expanded'
-              },
-            },
+                outputStyle: "expanded"
+              }
+            }
           }
         ]
       }
-    ],
+    ]
   },
   plugins: [
     new WebpackBar(),
@@ -63,18 +63,18 @@ module.exports = {
     })
   ],
   resolve: {
-    extensions: [ '.tsx', '.ts', '.js', '.sass' ],
+    extensions: [".tsx", ".ts", ".js", ".sass"]
   },
   optimization: {
     minimize: true,
     minimizer: [
       new UglifyJsPlugin({
-        include: /(min|index)\.js$/,
+        include: /(min|index)\.js$/
       }),
       new OptimizeCSSAssetsPlugin({
         assetNameRegExp: /(min|style)\.css$/g,
-        cssProcessor: require('cssnano'),
+        cssProcessor: require("cssnano")
       })
     ]
   }
-}
+};

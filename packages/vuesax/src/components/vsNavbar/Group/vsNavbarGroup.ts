@@ -1,13 +1,28 @@
 import { VNode } from 'vue'
-import { Component } from 'vue-property-decorator'
+import { Component, Prop, Watch } from 'vue-property-decorator'
 import VsComponent from '../../../mixins/component'
 
 @Component
 export default class VsNavbarGroup extends VsComponent {
+  @Prop({ default: false, type: Boolean }) active: boolean
+  @Prop({}) id: string
+
+  @Watch('active')
+  handleWatchActive() {
+    this.handleLine()
+  }
+
+  handleLine() {
+    this.$nextTick(() => {
+      if (this.active) this.setLeftLine();
+    })
+  }
+
   setModel(id: any) {
     const parent: any = this.$parent
     parent.setModel(id)
   }
+  
   setLeftLine() {
     const parent: any = this.$parent
     const left = (this.$el as any).offsetLeft
@@ -17,10 +32,21 @@ export default class VsNavbarGroup extends VsComponent {
   }
   setWidthLine() {}
 
+  handleClick() {
+    this.setModel(this.id);
+    this.handleLine()
+  }
+  
   public render(h: any): VNode {
     const item = h('button', {
       staticClass: 'vs-navbar__group__item',
-      ref: 'item'
+      ref: 'item',
+      on: {
+        click: (evt: any) => {
+          this.$emit('click', evt)
+          this.handleClick()
+        }
+      }
     }, [
       this.$slots.default
     ])
