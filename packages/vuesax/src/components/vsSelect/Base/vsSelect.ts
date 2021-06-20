@@ -104,9 +104,7 @@ export default class VsSelect extends VsComponent {
   getValue() {
     const options = this.childOptions
 
-    const filterOptions = options.filter((option: any): boolean => {
-      return typeof this.value == 'number' ? this.value == option.value : this.value.indexOf(option.value) !== -1
-    })
+    const filterOptions = options.filter((option: any): boolean => this.value === option.value)
 
     const label: any[] = []
     filterOptions.forEach((item: any) => {
@@ -130,9 +128,7 @@ export default class VsSelect extends VsComponent {
       valueLabel.forEach((item: any) => {
         labels.push(item.label)
       })
-    } else {
-      labels = valueLabel
-    }
+    } else labels = valueLabel
 
     return labels
   }
@@ -146,9 +142,7 @@ export default class VsSelect extends VsComponent {
     window.removeEventListener('click', this.handleWindowClick)
     if (this.activeOptions) {
       this.textFilter = ''
-      if (!this.multiple) {
-        this.activeFilter = false
-      }
+      if (!this.multiple) this.activeFilter = false
     }
   }
 
