@@ -3,9 +3,14 @@
   "version": "4.0.1-alpha.25",
   "description": "Framework components for vuejs",
   "main": "dist/vuesax.js",
+  "files": [
+    "dist/",
+    "scripts/",
+    "package.json"
+  ],
   "scripts": {
     "build": "node build/index.js",
-    "build:components": "npx webpack --config build/components/webpack.component.js",
+    "build:components": "npx webpack --config build/components/webpack.components.js",
     "test": "jest",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "new:component": "node scripts/newComponent.js",
