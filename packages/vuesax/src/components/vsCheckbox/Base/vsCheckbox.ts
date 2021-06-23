@@ -149,7 +149,6 @@ export default class VsCheckbox extends VsComponent {
     }, [
       this.$slots.default
     ])
-    console.log(this, this._uid);
 
     const conCheckbox = h('div', {
       staticClass: 'vs-checkbox-con'

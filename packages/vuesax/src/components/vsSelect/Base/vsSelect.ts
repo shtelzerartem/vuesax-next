@@ -1,3 +1,4 @@
+import { xor } from 'lodash'
 import { VNode } from 'vue'
 import { Component, Prop, Watch } from 'vue-property-decorator'
 import VsIconsArrow from '../../../icons/arrow'
@@ -102,7 +103,12 @@ export default class VsSelect extends VsComponent {
   getValue() {
     const options = this.childOptions
 
-    const filterOptions = options.filter((option: any): boolean => this.value === option.value)
+    const filterOptions = options.filter((option: any): boolean => {
+      if (typeof this.value === 'object' && this.multiple) return this.value.indexOf(option.value) !== -1
+      return this.value === option.value;
+    })
+
+    console.log('Test', options, this.value);
 
     const label: any[] = []
     filterOptions.forEach((item: any) => {
@@ -375,6 +381,7 @@ export default class VsSelect extends VsComponent {
         const h = (this.$refs.chips as HTMLElement).scrollHeight;
         (this.$refs.input as HTMLElement).style.height = `${h}px`
         const options = this.$refs.options as HTMLElement
+
         if (this.activeOptions) {
           this.$nextTick(() => {
             setCords(options, this.$refs.select)
