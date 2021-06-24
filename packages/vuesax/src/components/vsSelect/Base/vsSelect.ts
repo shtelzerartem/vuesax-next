@@ -1,4 +1,3 @@
-import { xor } from 'lodash'
 import { VNode } from 'vue'
 import { Component, Prop, Watch } from 'vue-property-decorator'
 import VsIconsArrow from '../../../icons/arrow'
@@ -84,17 +83,14 @@ export default class VsSelect extends VsComponent {
         (this.$refs.chips as HTMLElement).focus()
       }
     }, 10)
-    if (!this.multiple) {
-      this.handleBlur()
-    }
+
+    if (!this.multiple) this.handleBlur()
   }
 
   setHover() {
     let index: number = -1
     this.childOptions.forEach((item: any, i: number) => {
-      if (item.value == this.value) {
-        index = i
-      }
+      if (item.value == this.value) index = i
     })
 
     this.hoverOption = index
@@ -104,11 +100,11 @@ export default class VsSelect extends VsComponent {
     const options = this.childOptions
 
     const filterOptions = options.filter((option: any): boolean => {
-      if (typeof this.value === 'object' && this.multiple) return this.value.indexOf(option.value) !== -1
-      return this.value === option.value;
-    })
+      if (typeof this.value === 'number') return this.value == option.value;
+      if (typeof this.value === 'string') return this.value === option.value;
 
-    console.log('Test', options, this.value);
+      return this.value.indexOf(option.value) !== -1
+    })      
 
     const label: any[] = []
     filterOptions.forEach((item: any) => {
@@ -171,20 +167,18 @@ export default class VsSelect extends VsComponent {
               setTimeout(() => {
                 this.targetClose = false;
               }, 100);
+
               if (!this.activeOptions) {
                 (this.$refs.chips as HTMLElement).blur();
                 if (this.filter) {
                   (this.$refs.chips_input as HTMLElement).blur()
                 }
               }
+
               this.clickOption(item.value, item.label)
             },
-            mouseleave: () => {
-              this.targetClose = false
-            },
-            mouseenter: () => {
-              this.targetClose = true
-            }
+            mouseleave: () => this.targetClose = false,
+            mouseenter: () => this.targetClose = true,
           },
         }, [this.$createElement(VsIconsClose, {
           props: {

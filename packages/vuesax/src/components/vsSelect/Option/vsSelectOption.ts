@@ -19,12 +19,14 @@ export default class VsSelectOption extends VsComponent {
 
   hiddenOption: boolean = false
 
+  _uid: any
+
   myIndex: 0
 
   @Watch('$parent.textFilter')
   handleTextFilter(val: string) {
     if (val) {
-      if (this.label === val) {
+      if (this.label.toLowerCase().indexOf(val.toLowerCase()) === -1) {
         this.hiddenOption = true
       } else {
         this.hiddenOption = false
@@ -35,7 +37,11 @@ export default class VsSelectOption extends VsComponent {
   }
 
   get isActive() {
-    return this.getParent().value === this.value;
+    const parentValue = this.getParent().value;
+    if (typeof parentValue === 'string') return parentValue === this.value;
+    if (typeof parentValue === 'number') return parentValue == this.value;
+
+    return parentValue.indexOf(this.value) !== -1;
   }
 
   get isHover() {
@@ -82,6 +88,7 @@ export default class VsSelectOption extends VsComponent {
       on: {
         ...this.$listeners,
         mousedown: () => {
+          console.log(this.value);
           (this.$parent as any).clickOption(this.value, this.label)
         },
         blur: () => {
