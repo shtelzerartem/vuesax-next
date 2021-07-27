@@ -6,9 +6,10 @@ import VsComponent from '../../../mixins/component'
 @Component
 export default class VsTableTh extends VsComponent {
   @Prop({ default: false, type: Boolean }) sort: boolean
+  @Prop({ default: false, type: String }) width: string
 
   mounted() {
-    (this.$el as HTMLElement).style.width = `${this.$el.scrollWidth}px`
+    if (this.width) (this.$el as HTMLElement).style.width = this.width
   }
 
   public render(h: any): VNode {

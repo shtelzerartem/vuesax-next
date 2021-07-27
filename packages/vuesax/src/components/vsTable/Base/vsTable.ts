@@ -9,6 +9,7 @@ export default class VsTable extends VsComponent {
   @Prop({}) value: any
   @Prop({ default: false, type: Boolean }) striped: any
   @Prop({ default: false, type: Boolean }) loading: boolean
+  @Prop({ default: false, type: String }) minWidth: boolean
   // @Prop({ default: false, type: Boolean }) multiple: boolean
 
   mounted() {
@@ -85,6 +86,9 @@ export default class VsTable extends VsComponent {
         isSelectedValue: this.value,
         striped: this.striped,
         isMultipleSelected: this.isMultipleSelected
+      },
+      style: {
+        width: (this.minWidth) ? this.minWidth : 'auto',
       }
     }, [
       h('table', {}, [
