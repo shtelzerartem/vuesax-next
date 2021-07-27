@@ -105,6 +105,7 @@ function getNavbar (lang = '/') {
 							{ text: 'Navbar', link: `${lang}docs/components/Navbar` },
 							{ text: 'Sidebar', link: `${lang}docs/components/Sidebar` },
 							{ text: 'Card', link: `${lang}docs/components/Card` },
+							{ text: 'Dropdown', link: `${lang}docs/components/Dropdown` },
 							// new component slot 1
             ]
           }
@@ -202,6 +203,7 @@ function getSidebar (lang = '/') {
 						`${lang}docs/components/Navbar`,
 						`${lang}docs/components/Sidebar`,
 						`${lang}docs/components/Card`,
+						`${lang}docs/components/Dropdown`,
 						// new component slot 2
           ]
         },
