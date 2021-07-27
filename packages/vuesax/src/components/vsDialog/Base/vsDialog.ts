@@ -154,7 +154,7 @@ export default class VsDialog extends VsComponent {
       },
       on: {
         click: (evt: any) => {
-          if (!evt.target.closest('.vs-dialog') && !this.preventClose) {
+          if (evt.target.className === "vs-dialog-content" && !this.preventClose) {
             this.$emit('input', !this.value)
             this.$emit('close')
           }
