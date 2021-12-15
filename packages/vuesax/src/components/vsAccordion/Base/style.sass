@@ -1,0 +1,30 @@
+@import '../../../styles/mixins'
+@import 'root'
+
+.vs-accordion-content
+  width: 100%
+  border-radius: 16px
+
+.vs-accordion
+  width: 100%
+  margin: 0px
+  overflow: auto
+  background: -color('gray-1')
+  border-radius: 14px 0px 0px 14px
+  box-shadow: 0px 0px 25px 0px rgb(0 0 0 / 10%)
+
+  &__header
+    width: 100%
+    border-radius: 14px 0px 0px 14px
+    background: white
+    cursor: pointer
+
+  &__body_wrapper
+    transition: all .25s ease
+    overflow: hidden
+
+  &__body
+    background: transparent
+
+.fade-expand-enter-active, .fade-expand-leave-active
+  transition: all .25s ease

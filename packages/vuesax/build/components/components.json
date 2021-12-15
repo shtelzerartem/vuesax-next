@@ -4,9 +4,9 @@
   "vsInput": "./src/components/vsInput/Base/index.ts",
   "vsCheckbox": "./src/components/vsCheckbox/Base/index.ts",
   "vsSwitch": "./src/components/vsSwitch/Base/index.ts",
-  "vsSelect": "./src/components/vsSelect/Base/index.ts",
-  "vsOption": "./src/components/vsSelect/Option/index.ts",
-  "vsOptionGroup": "./src/components/vsSelect/OptionGroup/index.ts",
+  "vsSelect": "./src/components/vsSelect/index.ts",
+  "vsOption": "./src/components/vsOption/index.ts",
+  "vsOptionGroup": "./src/components/vsOptionGroup/index.ts",
   "vsAvatar": "./src/components/vsAvatar/Base/index.ts",
   "vsAvatarGroup": "./src/components/vsAvatar/Group/index.ts",
   "vsRadio": "./src/components/vsRadio/Base/index.ts",
@@ -24,7 +24,9 @@
   "vsSidebarItem": "./src/components/vsSidebar/Item/index.ts",
   "vsSidebarGroup": "./src/components/vsSidebar/Group/index.ts",
   "vsCard": "./src/components/vsCard/Base/index.ts",
+  "vsList": "./src/components/vsList/index.ts",
   "vsCardGroup": "./src/components/vsCard/Group/index.ts",
-  "vsDropdown": "./src/components/vsDropdown/Base/index.ts",
+  "vsAccordion": "./src/components/vsAccordion/Base/index.ts",
+  "vsTextarea": "./src/components/vsTextarea/Base/index.ts",
   "newComponent": ""
 }

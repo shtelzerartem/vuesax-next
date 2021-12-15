@@ -11,7 +11,6 @@
   .vs-dialog
     transition: all .15s ease
 
-
 .vs-dialog-enter, .vs-dialog-leave-to
   opacity: 0
   .vs-dialog
@@ -140,6 +139,8 @@
   &--rebound
     animation: reboundClick .3s !important
   &--fullScreen
+    display: flex
+    flex-direction: column
     width: calc(100% - 30px) !important
     height: calc(100% - 30px) !important
     max-width: none !important
@@ -157,6 +158,9 @@
     width: 100%
     position: relative
     border-radius: inherit
+    display: flex
+    flex-direction: column
+    overflow: auto
     &.notFooter
       margin-bottom: 20px
   &__close

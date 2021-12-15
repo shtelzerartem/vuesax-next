@@ -1,8 +1,8 @@
 import './style.sass'
-import component from './VsDropdown'
+import component from './vsList'
 
 component.install = (vue: any) => {
-  vue.component('vs-dropdown', component)
+  vue.component('vs-list', component)
 }
 
 if (typeof window !== 'undefined' && window.Vue) {

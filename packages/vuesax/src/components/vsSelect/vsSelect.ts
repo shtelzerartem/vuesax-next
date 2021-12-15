@@ -1,9 +1,9 @@
 import { VNode } from 'vue'
 import { Component, Prop, Watch } from 'vue-property-decorator'
-import VsIconsArrow from '../../../icons/arrow'
-import VsIconsClose from '../../../icons/close'
-import VsComponent from '../../../mixins/component'
-import { insertBody, setCords } from '../../../util/index'
+import VsIconsArrow from '../../icons/arrow'
+import VsIconsClose from '../../icons/close'
+import VsComponent from '../../mixins/component'
+import { insertBody, setCords } from '../../util/index'
 
 @Component
 export default class VsSelect extends VsComponent {
